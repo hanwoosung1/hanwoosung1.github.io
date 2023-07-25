@@ -49,9 +49,9 @@ function updateTimer() {
   const alerts = {
     c5sec: { time: 5, message: "테스트용 알람" },
     c100sec: { time: 100, message: "메소먹어라" },
-    c10min: { time: 600, message: "10분 유니온 행운, 유니온 메소 사용" },
+    c10min: { time: 600, message: "10분 유니온 쿠폰 사용" },
     c15min: { time: 900, message: "15분 경험치 쿠폰 사용" },
-    c20min: { time: 1200, message: "20분 유니온 행운, 유니온 메소 사용" },
+    c20min: { time: 1200, message: "20분 유니온 쿠폰 사용" },
     c30min: { time: 1800, message: "30분 경험치 쿠폰 사용" },
   };
 
