@@ -67,8 +67,8 @@ function updateTimer() {
 }
 
 function speakTts(text) {
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "ko-KR";
-
-  speechSynthesis.speak(utterance);
-}
+  if ("speechSynthesis" in window) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "ko-KR";
+    speechSynthesis.speak(utterance);
+  } else {}
