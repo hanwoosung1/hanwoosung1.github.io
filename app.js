@@ -5,13 +5,25 @@ const currentTimeElement = document.getElementById("currentTime");
 let timerActive = false;
 
 function initTtsDemo() {
-  if (!("speechSynthesis" in window)) {
+  if (!('speechSynthesis' in window)) {
     alert(
-      "현재 웹 브라우저는 Web Speech API를 지원하지 않습니다. 최신 버전의 크롬 또는 파이어폭스를 사용해주세요."
+      '현재 웹 브라우저는 Web Speech API를 지원하지 않습니다. 최신 버전의 크롬 또는 파이어폭스를 사용해주세요.',
     );
-    return;
   }
 
+  const startButton = document.getElementById('startButton');
+
+  startButton.addEventListener('click', function (e) {
+    timerActive = !timerActive;
+    if (timerActive) {
+      startButton.textContent = '정지';
+    } else {
+      startButton.textContent = '시작';
+    }
+  });
+
+  setInterval(updateTimer, 1000);
+}
   const startButton = document.getElementById("startButton");
 
   startButton.addEventListener("click", () => {
@@ -70,5 +82,9 @@ function speakTts(text) {
   if ("speechSynthesis" in window) {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "ko-KR";
-    speechSynthesis.speak(utterance);
-  } else {}
+    window.speechSynthesis.cancel(); // 현재 음성을 중단하고 새 음성 합성 시작
+    window.speechSynthesis.speak(utterance);
+  } else {
+    alert("Web Speech API를 지원하지 않는 브라우저입니다.");
+  }
+}
